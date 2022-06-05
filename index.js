@@ -5,7 +5,20 @@ const pc = newPlayableCharacter(100, 110)
 const npc = newNonPlayableCharacter(50, 300)
 
 // have the NPC start walking east immediately
-npc.walkEast()
+/*async function moveNPC() {  //made an async function in order wrap the async logic to be invoked
+    await npc.walkEast(2000) // making the character walk for 2 seconds in order to make the next move
+    npc.walkSouth()  //character will walk south after the promise of walking East has occured
+    */ // this was the sample of the original portion
+    async function moveNPC(){
+        await npc.walkNorth(1400)
+        await npc.walkEast(1200)
+        await npc.walkSouth(300)
+        await npc.walkEast(1500)
+        await npc.walkSouth(1500)
+        await npc.walkWest(2700)
+        await npc.walkNorth(400)
+    }
+moveNPC() //invoke the async function
 
 // Create the inventory
 const inventory = newInventory()

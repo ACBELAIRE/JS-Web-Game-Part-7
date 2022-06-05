@@ -23,30 +23,44 @@ function newNonPlayableCharacter(x, y) {
 
     setInterval(moveCharacter, 1)
 
-    function walkEast() {
+//Make Aysnc, Accept time as a parameter
+// invoke sleep(time) at the end of the function
+// await to pause walkEast() until sleep(time) has resolved
+// stop() after sleep has resolved
+   async function walkEast(time) { //made the function async
         direction = 'east'
         element.src = `./assets/red-character/east.gif`
+        await sleep(time) // awaits a certain amount of time walking East before returning a promise
+        return stop()  // returns a promise of stopping
     }
 
-    function walkNorth() {
+  async function walkNorth(time) { //made function async
         direction = 'north'
         element.src = `./assets/red-character/north.gif`
+        await sleep(time) // awaits a certain amount of time walking North before returning a promise
+        return stop()  // returns a promise of stopping
     }
 
-    function walkWest() {
+  async function walkWest(time) { //made function async
         direction = 'west'
         element.src = `./assets/red-character/west.gif`
+        await sleep(time) // awaits a certain amount of time walking West before returning a promise
+        return stop() // returns a promise of stopping
     }
 
-    function walkSouth() {
+   async function walkSouth(time) { //made function async
         direction = 'south'
         element.src = `./assets/red-character/south.gif`
+        await sleep(time) // awaits a certain amount of time walking South before returning a promise
+        return stop() // returns a promise of stopping
     }
 
-    function stop() {
+        function stop() {
         direction = null
         element.src = `./assets/red-character/static.gif`
     }
+
+   
 
     return {
         element: element,
@@ -59,6 +73,7 @@ function newNonPlayableCharacter(x, y) {
 }
 
 //define sleep function
+//sleep is the equivalent to set time out
 function sleep(time){
     return new Promise(resolve => {
         setTimeout(resolve, time)
