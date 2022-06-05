@@ -57,3 +57,10 @@ function newNonPlayableCharacter(x, y) {
         stop: stop
     }
 }
+
+//define sleep function
+function sleep(time){
+    return new Promise(resolve => {
+        setTimeout(resolve, time)
+    })  
+}
